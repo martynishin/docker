@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t php/eight -f Dockerfile.dev .
+
+script:
+  - composer install
+  - docker run -it -v $(pwd):/var/www/html php/eight vendor/bin/phpunit
