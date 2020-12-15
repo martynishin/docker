@@ -1,0 +1,15 @@
+# Use an existing image as a base
+FROM php:8-apache
+
+# Download and install a dependency
+# apk - preinstalled command in alpine image
+# RUN apk add --update redis
+# RUN apk add --update gcc
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Copy local root folder to /var/www/html folder in a container
+# COPY ./ /var/www/html/
+
+# Tell the image what to do when it starts as a container
+# CMD ["php", "index.php"]
