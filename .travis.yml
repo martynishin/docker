@@ -3,9 +3,29 @@ sudo: required
 services:
   - docker
 
+# In this section we build docker containers for quality tests
 before_install:
   - docker build -t php/eight -f Dockerfile.dev .
 
+# In this section we run internal commands, like composer or unit tests
 script:
   - docker run -it -v $(pwd):/var/www/html php/eight composer install
   - docker run -it -v $(pwd):/var/www/html php/eight vendor/bin/phpunit
+
+# In this section we build production docker containers
+after_success:
+  - docker build -t php/eight .
+  # Login to the Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push php/eight
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-west-2"
+#   app: "docker"
+#   env: "Docker-env"
+#   bucket_name: "elasticbeanstalk-us-west-2-43987209384790"
+#   bucket_path: "docker"
+#   on:
+#     branch: master
