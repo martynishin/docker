@@ -14,11 +14,11 @@ script:
 
 # In this section we build production docker containers
 after_success:
-  - docker build -t php/eight .
+  - docker build -t martynishin/php-eight .
   # Login to the Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push php/eight
+  - docker push martynishin/php-eight
 
 # deploy:
 #   provider: elasticbeanstalk
