@@ -1,6 +1,6 @@
 <?php
 
-//echo "<h1>Hello PHP 8</h1>";
+//echo "<h1>Hello PHP 8!</h1>";
 
 $servername = "docker-db.cbfnojdd8tow.us-east-1.rds.amazonaws.com";
 $username = "docker";
