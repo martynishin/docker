@@ -25,6 +25,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 # COPY ./ /var/www/html/
 
 WORKDIR /var/www/html
+EXPOSE 80
 
 # Tell the image what to do when it starts as a container
 # CMD ["php", "index.php"]
