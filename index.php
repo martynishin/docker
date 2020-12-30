@@ -2,7 +2,7 @@
 
 //echo "<h1>Hello PHP 8</h1>";
 
-$servername = "mysql";
+$servername = "docker-db.cbfnojdd8tow.us-east-1.rds.amazonaws.com";
 $username = "docker";
 $password = "password";
 $dbname = "docker";

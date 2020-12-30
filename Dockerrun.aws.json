@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "app",
-      "image": "dockerId/repoName",
+      "image": "martynishin/php-eight",
       "hostname": "app",
       "essential": true,
       "portMappings": [

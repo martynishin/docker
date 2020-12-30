@@ -1,4 +1,4 @@
-language: php
+language: generic
 sudo: required
 services:
   - docker
@@ -20,12 +20,15 @@ after_success:
   # Take those images and push them to docker hub
   - docker push martynishin/php-eight
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-2"
-#   app: "docker"
-#   env: "Docker-env"
-#   bucket_name: "elasticbeanstalk-us-west-2-43987209384790"
-#   bucket_path: "docker"
-#   on:
-#     branch: master
+# Deploy to AWS Elastic Beanstalk
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'   # elasticbeanstalk application region (can see in url)
+  app: 'docker'   # elasticbeanstalk application name
+  env: 'Docker-env'   # elasticbeanstalk environment name
+  bucket_name: 'elasticbeanstalk-us-east-1-517868632612'   # S3 bucket name that was created by elasticbeanstalk
+  bucket_path: 'docker'   # the same name as app name (inside the current bucket you can't see needed directory, because it create on first deploy and named as EB application name)
+  on:
+    branch: master   # git branch which we want to deploy and configured on Travis CI
+  access_key_id: $AWS_ACCESS_KEY   # variable from Travis CI
+  secret_access_key: $AWS_SECRET_KEY   # variable from Travis CI
