@@ -6,6 +6,7 @@
       "image": "martynishin/php-eight",
       "hostname": "app",
       "essential": true,
+      "memory": 128,
       "portMappings": [
         {
           "hostPort": 80,
