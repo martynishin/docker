@@ -24,7 +24,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 # Copy local root folder to /var/www/html folder in a container
 # COPY ./ /var/www/html/
 
-WORKDIR /var/www/html
+WORKDIR /var/app/staging
 EXPOSE 80
 
 # Tell the image what to do when it starts as a container
